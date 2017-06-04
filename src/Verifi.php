@@ -169,7 +169,7 @@ class Verifi {
     protected function validateCredentials($token, $email, $expiration) {
 
         if (is_null($user = $this->validateEmail($email)) || !$this->validateToken($user, $token, $email, $expiration) || !$this->validateTimestamp($expiration)) {
-            return static::INVALID_CREDENTIALS;
+            return self::INVALID_CREDENTIALS;
         }
 
         return $user;
