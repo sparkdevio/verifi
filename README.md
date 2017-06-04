@@ -9,7 +9,7 @@ A Laravel package to handle email verification.
 It is inspired by [crypto-based password resets](https://github.com/laravel/framework/pull/17499) and the [email verification package by josiasmontag](https://github.com/josiasmontag/laravel-email-verification).
 
 - Crypto-based email verification. No need to store a temporary token in the database!
-- Event based totally. No need to override your `register()` method.
+- Event-based totally. No need to override your `register()` method.
 - Using the Laravel 5.4 notification system.
 - You're free to create routes anyway you like.
 - Resend the verification email anytime.
