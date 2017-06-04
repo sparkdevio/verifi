@@ -23,7 +23,7 @@ class Verifi {
      * Constant representing credentials are invalid.
      * @var string
      */
-    protected const INVALID_CREDENTIALS = 'invalid';
+    const INVALID_CREDENTIALS = 'invalid';
     /**
      * The application key.
      * @var string
