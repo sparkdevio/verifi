@@ -27,7 +27,7 @@ class AddIsEmailVerifiedColumnToUsersTable extends Migration {
      */
     public function getUsersTableName() {
 
-        $userModel = config('auth.providers.users.model', App\User::class);
+        $userModel = config('auth.providers.users.model', 'App\User');
 
         return (new $userModel)->getTable();
     }
