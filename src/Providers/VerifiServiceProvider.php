@@ -23,10 +23,11 @@ class VerifiServiceProvider extends ServiceProvider {
             __DIR__ . '/../../config/config.php' => config_path('verifi.php'),
         ]);
 
-        $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations');
-        $this->publishes([
-            __DIR__ . '/../../database/migrations' => database_path('migrations'),
-        ], 'migrations');
+        if (!class_exists('AddIsEmailVerifiedColumnToUsersTable')) {
+            $this->publishes([
+                __DIR__ . '/../../database/migrations/add_is_email_verified_column_to_users_table.php.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . '_add_is_email_verified_column_to_users_table.php'),
+            ], 'migrations');
+        }
     }
 
     /**
