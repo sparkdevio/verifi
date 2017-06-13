@@ -65,8 +65,11 @@ class Verifi {
      * Send a email verification link to a user.
      *
      * @param \Meness\Verifi\Entities\Traits\Contracts\Verifi|\Illuminate\Notifications\Notifiable $user
+     * @param null                                                                                 $callback
+     *
+     * @return mixed
      */
-    public function resend($user) {
+    public function resend($user, $callback = null) {
 
         $expiration = Carbon::now()->addMinutes($this->expiration)->timestamp;
         $token      = $this->createToken($user, $expiration);
@@ -74,6 +77,8 @@ class Verifi {
         $user->sendEmailVerifyNotification($token, $expiration);
 
         $this->dispatcher->dispatch(new VerificationSent($user));
+
+        return call_user_func($callback, $user);
     }
 
     /**
@@ -124,11 +129,17 @@ class Verifi {
 
     /**
      * @param \Illuminate\Http\Request $request
+     * @param null                     $callback
+     *
+     * @return mixed
      */
-    public function verify($request) {
+    public function verify($request, $callback = null) {
 
         $data = $request->only('token', 'email', 'expiration');
 
+        /**
+         * @var \Illuminate\Validation\Validator $validator
+         */
         $validator = validator($data, [
             'token'      => 'required|string',
             'email'      => 'required|email',
@@ -139,7 +150,7 @@ class Verifi {
             // Dispatch the invalid credentials event
             $this->dispatcher->dispatch(new InvalidCredentials($validator));
 
-            return;
+            $validator->validate();
         }
 
         list('token' => $token, 'email' => $email, 'expiration' => $expiration) = $data;
@@ -150,11 +161,13 @@ class Verifi {
             // Dispatch the invalid credentials event
             $this->dispatcher->dispatch(new InvalidCredentials(null));
 
-            return;
+            return call_user_func($callback);
         }
 
         // Dispatch the verified event
         $this->dispatcher->dispatch(new Verified($user));
+
+        return $callback != null ? call_user_func($callback, $user) :null;
     }
 
     /**
