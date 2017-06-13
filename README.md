@@ -108,11 +108,28 @@ There're two methods available, `verify()` and `resend()`.
 
 #### `verify()`
 
-`Verifi::verify()` expects a request object. It verifies credentials provided with the request.
+`Verifi::verify()` expects a request object and an optional callback. It verifies credentials provided with the request.
+
+```php
+Verifi::verify(request(), function ($user) {
+
+	if (is_null($user)) {
+		// Invalid credentials provided
+	} else {
+		// Verified
+	}
+});
+```
 
 #### `resend()`
 
-`Verifi::resend()` expects an user model object. It sends the verification email to the provided user.
+`Verifi::resend()` expects an user model object and an optional callback. It sends the verification email to the provided user.
+
+```php
+Verifi::resend($user, function ($user) {
+	// Resent successfully
+});
+```
 
 ### Step Five (Optional)
 
