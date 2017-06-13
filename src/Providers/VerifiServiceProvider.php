@@ -38,7 +38,7 @@ class VerifiServiceProvider extends ServiceProvider {
         $this->app->register(EmailVerifyEventServiceProvider::class);
         $this->app->singleton(Verifi::class, function () {
 
-            return new Verifi(Auth::getProvider(), Auth::getDispatcher(), config('app.key'), config('verifi.expiration', 1440));
+            return new Verifi(Auth::guard('web')->getProvider(), Auth::guard('web')->getDispatcher(), config('app.key'), config('verifi.expiration', 1440));
         });
         $this->app->alias(Verifi::class, 'verifi');
     }
