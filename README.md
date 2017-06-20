@@ -1,5 +1,5 @@
 # Laravel Verifi
-[![Travis](https://img.shields.io/travis/rust-lang/rust.svg)](https://travis-ci.org/meness/Verifi)
+[![Travis](https://img.shields.io/travis/meness/verifi.svg)](https://travis-ci.org/meness/Verifi)
 [![Packagist](https://img.shields.io/packagist/dt/meness/verifi.svg)](https://packagist.org/packages/meness/verifi)
 [![Packagist](https://img.shields.io/packagist/v/meness/verifi.svg)](https://packagist.org/packages/meness/verifi)
 [![Packagist](https://img.shields.io/packagist/l/meness/verifi.svg)](https://packagist.org/packages/meness/verifi)
