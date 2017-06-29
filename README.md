@@ -142,9 +142,18 @@ $routeMiddleware = [
 ];
 ```
 
+## Changelog
+
+Please see [releases](https://github.com/meness/verifi/releases) for more information what has changed recently.
+
+## Contributing
+
+Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
+
 ## Credits
 
 * [Alireza Eskandarpour Shoferi](https://about.me/meness)
+* [Contributors](https://github.com/meness/verifi/graphs/contributors)
 
 ## License
 Verifi is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
