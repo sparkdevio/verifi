@@ -18,7 +18,7 @@ use UnexpectedValueException;
  * @package Meness\Verifi
  */
 class Verifi {
-    
+
     /**
      * The application key.
      * @var string
@@ -156,13 +156,13 @@ class Verifi {
             // Dispatch the invalid credentials event
             $this->dispatcher->dispatch(new InvalidCredentials(null));
 
-            return call_user_func($callback, null);
+            return is_callable($callback) ? call_user_func($callback, null) : null;
         }
 
         // Dispatch the verified event
         $this->dispatcher->dispatch(new Verified($user));
 
-        return $callback != null ? call_user_func($callback, $user) : null;
+        return is_callable($callback) ? call_user_func($callback, $user) : null;
     }
 
     /**
