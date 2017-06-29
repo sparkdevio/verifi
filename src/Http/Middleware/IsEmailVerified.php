@@ -14,13 +14,14 @@ class IsEmailVerified {
     /**
      * @param \Illuminate\Http\Request $request
      * @param Closure                  $next
+     * @param  string|null $guard
      *
      * @return mixed
      * @throws \Meness\Verifi\Exceptions\UserNotVerifiedException
      */
-    public function handle($request, Closure $next) {
+    public function handle($request, Closure $next, $guard = null) {
 
-        if (!is_null($request->user()) && !$request->user()->isEmailVerified()) {
+        if (!is_null($request->user($guard)) && !$request->user($guard)->isEmailVerified()) {
             throw new UserNotVerifiedException();
         }
 
