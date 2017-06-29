@@ -11,6 +11,8 @@ use Meness\Verifi\Notifications\VerifyEmailNotification;
 trait VerifiTrait {
 
     /**
+     * Send the user a notification.
+     *
      * @param $token
      * @param $expiration
      */

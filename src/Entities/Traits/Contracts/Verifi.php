@@ -27,6 +27,8 @@ interface Verifi {
     public function isEmailVerified();
 
     /**
+     * Send the user a notification.
+     *
      * @param $token
      * @param $expiration
      */
