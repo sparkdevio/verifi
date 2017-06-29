@@ -172,7 +172,7 @@ class Verifi {
      * @param $email
      * @param $expiration
      *
-     * @return \Meness\Verifi\Entities\Traits\Contracts\Verifi|bool
+     * @return \Meness\Verifi\Entities\Traits\Contracts\Verifi|false
      */
     protected function validateCredentials($token, $email, $expiration) {
 
