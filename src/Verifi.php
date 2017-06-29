@@ -167,7 +167,7 @@ class Verifi {
         // Dispatch the verified event
         $this->dispatcher->dispatch(new Verified($user));
 
-        return $callback != null ? call_user_func($callback, $user) :null;
+        return $callback != null ? call_user_func($callback, $user) : null;
     }
 
     /**

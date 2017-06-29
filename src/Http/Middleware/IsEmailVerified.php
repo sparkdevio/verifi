@@ -14,7 +14,7 @@ class IsEmailVerified {
     /**
      * @param \Illuminate\Http\Request $request
      * @param Closure                  $next
-     * @param  string|null $guard
+     * @param  string|null             $guard
      *
      * @return mixed
      * @throws \Meness\Verifi\Exceptions\UserNotVerifiedException
