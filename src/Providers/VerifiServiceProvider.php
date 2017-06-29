@@ -21,7 +21,7 @@ class VerifiServiceProvider extends ServiceProvider {
         $this->mergeConfigFrom(__DIR__ . '/../../config/config.php', 'verifi');
         $this->publishes([
             __DIR__ . '/../../config/config.php' => config_path('verifi.php'),
-        ]);
+        ], 'config');
 
         if (!class_exists('AddIsEmailVerifiedColumnToUsersTable')) {
             $this->publishes([
