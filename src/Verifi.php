@@ -18,12 +18,7 @@ use UnexpectedValueException;
  * @package Meness\Verifi
  */
 class Verifi {
-
-    /**
-     * Constant representing credentials are invalid.
-     * @var string
-     */
-    const INVALID_CREDENTIALS = 'invalid';
+    
     /**
      * The application key.
      * @var string
@@ -157,7 +152,7 @@ class Verifi {
 
         $user = $this->validateCredentials($token, $email, $expiration);
 
-        if (is_string($user)) {
+        if (is_bool($user)) {
             // Dispatch the invalid credentials event
             $this->dispatcher->dispatch(new InvalidCredentials(null));
 
@@ -177,12 +172,12 @@ class Verifi {
      * @param $email
      * @param $expiration
      *
-     * @return \Illuminate\Contracts\Auth\Authenticatable|string
+     * @return \Meness\Verifi\Entities\Traits\Contracts\Verifi|bool
      */
     protected function validateCredentials($token, $email, $expiration) {
 
         if (is_null($user = $this->validateEmail($email)) || !$this->validateToken($user, $token, $email, $expiration) || !$this->validateTimestamp($expiration)) {
-            return self::INVALID_CREDENTIALS;
+            return false;
         }
 
         return $user;
