@@ -32,7 +32,7 @@
     "illuminate/bus": "~5.4",
     "illuminate/notifications": "~5.4",
     "illuminate/support": "~5.4",
-    "illuminate/database": "~5.4",
+    "illuminate/database": "~5.4"
   },
   "require-dev": {
     "phpunit/phpunit": "^5.0",
